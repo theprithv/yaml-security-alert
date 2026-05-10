@@ -1,0 +1,8 @@
+application:
+  name: SecurityMonitor
+
+security:
+  alerts: enabled
+
+email:
+  admin: yourmail@gmail.com
