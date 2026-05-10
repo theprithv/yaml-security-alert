@@ -1,37 +1,37 @@
-name: Security Email Alert
+name: Project Security Alert
 
 on:
   push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  send-alert:
-
+  alert:
     runs-on: ubuntu-latest
-
     steps:
-
     - name: Checkout Repository
       uses: actions/checkout@v4
 
-    - name: Send Email
+    - name: Send Security Email
       uses: dawidd6/action-send-mail@v3
-
       with:
         server_address: smtp.gmail.com
         server_port: 465
-
         username: ${{ secrets.EMAIL_USER }}
         password: ${{ secrets.EMAIL_PASSWORD }}
-
-        subject: GitHub Security Alert
-
+        subject: "SECURITY REVIEW: Change Request Detected"
         to: theprithv.2004@gmail.com
-
-        from: GitHub Security Bot
-
+        from: Security Monitor
         body: |
-          A new code push was detected.
+          Hello Admin,
 
-          Repository: ${{ github.repository }}
+          A security-sensitive event has occurred in the repository.
 
-          User: ${{ github.actor }}
+          Type: ${{ github.event_name }}
+          By User: ${{ github.actor }}
+          Detail: ${{ github.event.pull_request.title || github.event.head_commit.message }}
+          
+          Link to Review: ${{ github.event.pull_request.html_url || github.event.repository.html_url }}
+
+          Please review these changes before they are finalized.

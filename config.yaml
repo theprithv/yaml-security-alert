@@ -2,7 +2,8 @@ application:
   name: SecurityMonitor
 
 security:
-  alerts: disabled
+  alerts: enabled
+  
 
 email:
   admin: theprithv.2004@gmail.com

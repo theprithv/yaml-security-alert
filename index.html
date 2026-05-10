@@ -1,22 +1,33 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Security Monitoring Project</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Alert Demo</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
     <div class="container">
-        <h1>YAML Security Alert System</h1>
+        <img src="logo.png" alt="Logo" class="logo">
+        
+        <h1>YAML Security System</h1>
 
         <p>
-            This webpage is connected to GitHub security monitoring.
+            This system monitors our project files. If anyone makes changes, an automatic email alert is sent to the administrator.
         </p>
 
-        <button>Security Active</button>
+        <div class="status-box">
+            Status: <span class="status-active">● System Active</span>
+        </div>
+
+        <button id="demo-btn">Check System Status</button>
+
+        <footer>
+            Monito Repository: yaml-security-alert
+        </footer>
     </div>
 
+    <script src="script.js"></script>
 </body>
 </html>
